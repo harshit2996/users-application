@@ -1,0 +1,37 @@
+html, body{
+  height: 100%;
+  margin: 0%;
+  box-sizing: border-box; 
+}
+.main-wrapper{
+  height: 100%;
+  display: grid;
+  place-items:center;
+}
+
+.dd-menu{
+  position: absolute;
+  display: table-column;
+}
+.dd-button{
+  width:100%;
+  /* position: fixed; */
+}
+.options{
+  display: table-cell;
+  position: relative;
+  text-align: start;
+  list-style-type:none;
+  margin:auto;
+  padding:0;
+
+}
+
+.options li{
+  padding: 10px;
+
+}
+.options li:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+}
