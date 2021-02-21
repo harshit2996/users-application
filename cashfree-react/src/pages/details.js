@@ -15,7 +15,6 @@ const UserDetails = (props) => {
 		axios.get('https://jsonplaceholder.typicode.com/users/' + id)
 			.then(res => {
 				setUser(res.data)
-				console.log(res.data)
 			})
 			.catch(err => {
 				console.log(err)
@@ -44,9 +43,7 @@ const UserDetails = (props) => {
 			<Row justify="space-between">
 				<h1>User Details for {user.name}</h1>
 				<Link to="/">
-					<Button>
-						Back
-          </Button>
+					<Button id="back-button">Back</Button>
 				</Link>
 			</Row>
 			<ul id="user-details">

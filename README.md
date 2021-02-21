@@ -4,6 +4,14 @@
 - cashfree-react - contains react application to view Users Data
 - dropdown - contains implementation of dropdown menu component
 
+## Screenshots for cashfree-react Application
+- Main Views
+![](https://github.com/harshit2996/users-application/blob/master/demo1.png)
+![](https://github.com/harshit2996/users-application/blob/master/demo2.png)
+
+- User Details view
+![](https://github.com/harshit2996/users-application/blob/master/demo3.png)
+
 ## Cashfree-React Application Installation Instructions
 1. Clone or download and extract the repository and navigate to the cashfree-react directory
 2. Run ```npm install``` to install the dependencies.
