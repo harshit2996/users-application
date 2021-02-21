@@ -1,30 +1,13 @@
-import { Col, Row, Table} from 'antd';
-import Axios from 'axios'
-import { useEffect, useState } from 'react';
+import { Button, Col, Row, Table} from 'antd';
+import { useState } from 'react';
 import {
   Link
 } from "react-router-dom";
 const { Column, ColumnGroup } = Table;
-const AllUsers = () =>{
-  const [users,setUsers] = useState([])
-  const [pageSize,setPageSize] = useState(5)
-  function getUsers(){
-    Axios.get('https://jsonplaceholder.typicode.com/users')
-    .then(res=>{
-      setUsers(res.data)
-      })
-    .catch(err=>{
-      console.log(err)
-    })
-  }
 
-  function deleteUser(user){
-    let tempusers = users
-    tempusers.splice(tempusers.indexOf(user),1)
-    let data =[]
-    tempusers.map(d=>(data.push(d)));
-    setUsers(data)  
-  }
+const AllUsers = (props) =>{
+  
+  const [pageSize,setPageSize] = useState(5)
 
   function flatten(obj) {
     let tempStr = ""
@@ -39,25 +22,22 @@ const AllUsers = () =>{
     return tempStr
   }
 
-
-
-  useEffect(()=>{
-    getUsers()
-  },[])
-
   return(
     <div>
       <Row justify="space-between">
         <h1>List of All Users</h1>
-        <input value={pageSize} type="number" id="page-size" onInput={(e)=>{if(e.target.value<51 && e.target.value>0){setPageSize(e.target.value)}}}></input>
+        <Col>
+          <label htmlFor="page-size"  > Page Size </label>
+          <input value={pageSize} type="number" id="page-size" onInput={(e)=>{if(e.target.value<51 && e.target.value>0){setPageSize(e.target.value)}}}></input>
+        </Col>
       </Row>
-      <Table dataSource={users} 
+      <Table dataSource={props.users} 
         rowKey={user=>user.id} 
         pagination={{pageSize:pageSize, showQuickJumper:true}} 
         showSorterTooltip={true}
       >
         {
-          (users[0])?Object.keys(users[0]).map((column,index)=>(
+          (props.users[0])?Object.keys(props.users[0]).map((column,index)=>(
           <Column title={column} dataIndex={column} key={index} 
             render={(text, user) => (
               (typeof(user[column])!=='object')?user[column]:flatten(user[column])
@@ -74,13 +54,13 @@ const AllUsers = () =>{
               colSpan={0}
               key="actions"
               render={(text, user) => (
-                <Link to={"/user/"+ user.id}>Open</Link>
+                <Link to={"/user/"+ user.id}><Button className="open-button">Open</Button></Link>
               )}
             />
             <Column
               colSpan={0}
               render={(text, user) => (
-                <button onClick={()=>deleteUser(user)}>Delete</button>
+                <Button onClick={()=>props.dUser(user)} className="delete-button">Delete</Button>
               )}>
             </Column>
           </ColumnGroup>

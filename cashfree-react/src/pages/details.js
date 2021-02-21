@@ -1,7 +1,8 @@
-import { Row } from 'antd';
+import { Button, Row } from 'antd';
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {
+  Link,
   useParams
 } from "react-router-dom";
 const UserDetails = (props) =>{
@@ -39,8 +40,13 @@ const UserDetails = (props) =>{
 
   return (
     <div>
-      <Row>
+      <Row justify="space-between">
         <h1>User Details for {user.name}</h1>
+        <Link to="/">
+          <Button>
+            Back
+          </Button>
+        </Link>
       </Row>
       <ul id="user-details">
         {

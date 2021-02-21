@@ -13,3 +13,20 @@ h1, #page-size{
 #user-details{
   list-style-type: none;
 }
+
+.open-button{
+  background-color:lightgreen;
+  &:hover{
+    background-color:green;
+    color: white;
+    border: none;
+  }
+}
+.delete-button{
+  background-color:rgba(255, 0, 0, 0.5);
+  &:hover{
+    background-color:rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+  }
+}
