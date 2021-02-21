@@ -1,3 +1,4 @@
+import { Row } from 'antd';
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {
@@ -38,7 +39,10 @@ const UserDetails = (props) =>{
 
   return (
     <div>
-      <ul>
+      <Row>
+        <h1>User Details for {user.name}</h1>
+      </Row>
+      <ul id="user-details">
         {
           Object.entries(user).map((obj)=>(
             <li key={obj[0]}>{obj[0]} : { typeof(obj[1])==='object'?convertToString(obj[1]):obj[1]}</li>
